@@ -1,0 +1,25 @@
+PODS:
+  - Alamofire (4.6.0)
+  - CCBottomRefreshControl (0.5.2)
+  - Nuke (6.0)
+  - RxCocoa (4.1.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - CCBottomRefreshControl
+  - Nuke (~> 6.0)
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  CCBottomRefreshControl: 389780b4488321c91d18f66a6da5ef9606df6de5
+  Nuke: d83812262734dad51e3c498cb1c4f7923f2b78c6
+  RxCocoa: cc1fec49cdc8fabe645964de7c51c099a36c2aa8
+  RxSwift: 4219941c1244c88002901bd87a69d3aea9ae71f0
+
+PODFILE CHECKSUM: 5e8d05c37a7b8dee5190cad8dc5c7b944844311b
+
+COCOAPODS: 1.4.0.rc.1

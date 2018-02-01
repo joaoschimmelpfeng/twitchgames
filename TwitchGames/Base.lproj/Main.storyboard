@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fdi-db-wnu">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="H4d-L1-bw4">
+            <objects>
+                <navigationController id="Fdi-db-wnu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kDn-li-GrW">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="KVH-u6-Fq4" kind="relationship" relationship="rootViewController" id="0k8-hi-Nu8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L8N-Rh-ivO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-722" y="143"/>
+        </scene>
+        <!--Base View Controller-->
+        <scene sceneID="FEM-fX-QRu">
+            <objects>
+                <viewController id="Gt0-JJ-hLC" customClass="BaseViewController" customModule="TwitchGames" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o1s-cx-NiN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJS-42-zI6">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <connections>
+                                    <segue destination="uec-hW-PMC" kind="embed" identifier="favoriteToDetail" id="4PS-Ur-dcY"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RJS-42-zI6" firstAttribute="trailing" secondItem="ND2-E8-9WL" secondAttribute="trailing" id="1mb-YN-kb5"/>
+                            <constraint firstItem="RJS-42-zI6" firstAttribute="leading" secondItem="ND2-E8-9WL" secondAttribute="leading" id="hYC-ZA-vdG"/>
+                            <constraint firstItem="RJS-42-zI6" firstAttribute="bottom" secondItem="ND2-E8-9WL" secondAttribute="bottom" id="jXm-8T-yq6"/>
+                            <constraint firstItem="RJS-42-zI6" firstAttribute="top" secondItem="ND2-E8-9WL" secondAttribute="top" id="twJ-Pi-abO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ND2-E8-9WL"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="U3k-EN-rj4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OY7-CD-XQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="885.50724637681162" y="442.66304347826093"/>
+        </scene>
+        <!--Game Details View Controller-->
+        <scene sceneID="vnx-DU-Nv0">
+            <objects>
+                <viewController id="mWm-CQ-oeF" customClass="GameDetailsViewController" customModule="TwitchGames" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ULc-qV-Gqh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nyo-SW-WW5">
+                                <rect key="frame" x="82" y="28" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Nyo-SW-WW5" secondAttribute="height" multiplier="1:1" id="fVi-9f-4LW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome do jogo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3e-Pc-hBh">
+                                <rect key="frame" x="20" y="286" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="j9Q-qg-hBG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="visualizacoes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMs-Xq-CBJ">
+                                <rect key="frame" x="0.0" y="344" width="414" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ew3-xu-wmD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YMs-Xq-CBJ" firstAttribute="leading" secondItem="Pnt-Qq-FiN" secondAttribute="leading" id="3Fq-G7-vvx"/>
+                            <constraint firstItem="YMs-Xq-CBJ" firstAttribute="trailing" secondItem="Pnt-Qq-FiN" secondAttribute="trailing" id="5mA-C7-7OK"/>
+                            <constraint firstItem="c3e-Pc-hBh" firstAttribute="top" secondItem="Nyo-SW-WW5" secondAttribute="bottom" constant="8" id="T9t-ym-k3a"/>
+                            <constraint firstItem="Pnt-Qq-FiN" firstAttribute="trailing" secondItem="c3e-Pc-hBh" secondAttribute="trailing" constant="20" id="YzK-oF-4UQ"/>
+                            <constraint firstItem="Nyo-SW-WW5" firstAttribute="top" secondItem="Pnt-Qq-FiN" secondAttribute="top" constant="8" id="ceh-IZ-cnn"/>
+                            <constraint firstItem="Pnt-Qq-FiN" firstAttribute="trailing" secondItem="Nyo-SW-WW5" secondAttribute="trailing" constant="82" id="dSy-8j-UZE"/>
+                            <constraint firstItem="Nyo-SW-WW5" firstAttribute="leading" secondItem="Pnt-Qq-FiN" secondAttribute="leading" constant="82" id="gmW-rP-xXM"/>
+                            <constraint firstItem="YMs-Xq-CBJ" firstAttribute="top" secondItem="c3e-Pc-hBh" secondAttribute="bottom" constant="8" id="j77-RK-KQQ"/>
+                            <constraint firstItem="c3e-Pc-hBh" firstAttribute="leading" secondItem="Pnt-Qq-FiN" secondAttribute="leading" constant="20" id="xyW-Tz-Bx5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Pnt-Qq-FiN"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageGameCover" destination="Nyo-SW-WW5" id="baP-ze-Vio"/>
+                        <outlet property="labelGameTitle" destination="c3e-Pc-hBh" id="gcz-Ma-pFV"/>
+                        <outlet property="labelVisualization" destination="YMs-Xq-CBJ" id="rSW-TA-hI8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="juK-RF-irt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2705.7971014492755" y="52.581521739130437"/>
+        </scene>
+        <!--Base View Controller-->
+        <scene sceneID="IwU-nh-6bK">
+            <objects>
+                <viewController id="WpY-j7-q6H" customClass="BaseViewController" customModule="TwitchGames" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CHd-CQ-lXh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bx5-tC-32k">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <connections>
+                                    <segue destination="uec-hW-PMC" kind="embed" identifier="gameToDetail" id="7Am-VG-H8c"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bx5-tC-32k" firstAttribute="leading" secondItem="gEf-rh-4dW" secondAttribute="leading" id="0RN-0q-0m4"/>
+                            <constraint firstItem="bx5-tC-32k" firstAttribute="bottom" secondItem="gEf-rh-4dW" secondAttribute="bottom" id="PkO-DF-Bib"/>
+                            <constraint firstItem="bx5-tC-32k" firstAttribute="top" secondItem="gEf-rh-4dW" secondAttribute="top" id="UDU-cg-y7Q"/>
+                            <constraint firstItem="bx5-tC-32k" firstAttribute="trailing" secondItem="gEf-rh-4dW" secondAttribute="trailing" id="lcS-UW-htO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gEf-rh-4dW"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="downloads" id="neA-il-2dG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zyB-sj-lW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="885.50724637681162" y="-295.10869565217394"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="vl0-Zt-388">
+            <objects>
+                <tabBarController id="KVH-u6-Fq4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="9DR-Jv-Vbk"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sPp-km-bN5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="WpY-j7-q6H" kind="relationship" relationship="viewControllers" id="OWA-Z1-3j5"/>
+                        <segue destination="Gt0-JJ-hLC" kind="relationship" relationship="viewControllers" id="xdA-7x-rcH"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BML-Qr-8Bs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="108" y="143"/>
+        </scene>
+        <!--Top Game List View Controller-->
+        <scene sceneID="AXX-nR-IXE">
+            <objects>
+                <viewController id="uec-hW-PMC" customClass="TopGameListViewController" customModule="TwitchGames" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ejQ-uf-L5P">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Pesquisar" translatesAutoresizingMaskIntoConstraints="NO" id="Tep-83-bCD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Ej7-7Q-LY0"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Pi-QJ-bMD">
+                                <rect key="frame" x="0.0" y="56" width="414" height="567"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ny9-nK-1bV">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Tep-83-bCD" secondAttribute="trailing" id="0LS-9V-vEr"/>
+                            <constraint firstItem="1Pi-QJ-bMD" firstAttribute="top" secondItem="ejQ-uf-L5P" secondAttribute="top" priority="750" id="HS6-y9-fZA"/>
+                            <constraint firstItem="Tep-83-bCD" firstAttribute="leading" secondItem="ejQ-uf-L5P" secondAttribute="leading" id="QzO-Kr-w60"/>
+                            <constraint firstItem="1Pi-QJ-bMD" firstAttribute="top" secondItem="Tep-83-bCD" secondAttribute="bottom" id="SsK-QC-yXO"/>
+                            <constraint firstAttribute="bottom" secondItem="1Pi-QJ-bMD" secondAttribute="bottom" id="X47-VV-xrB"/>
+                            <constraint firstItem="Tep-83-bCD" firstAttribute="top" secondItem="ejQ-uf-L5P" secondAttribute="top" id="eKj-8V-efU"/>
+                            <constraint firstAttribute="trailing" secondItem="1Pi-QJ-bMD" secondAttribute="trailing" id="kKK-3E-8rE"/>
+                            <constraint firstItem="1Pi-QJ-bMD" firstAttribute="leading" secondItem="ejQ-uf-L5P" secondAttribute="leading" id="xBu-1A-tke"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Up9-LX-55U"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="1Pi-QJ-bMD" id="KcL-lD-bAM"/>
+                        <outlet property="searchBar" destination="Tep-83-bCD" id="RJR-Q8-lKj"/>
+                        <segue destination="mWm-CQ-oeF" kind="show" identifier="toGameDetails" id="rnS-W0-I3a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aam-tL-B1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1942" y="53"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4PS-Ur-dcY"/>
+    </inferredMetricsTieBreakers>
+</document>

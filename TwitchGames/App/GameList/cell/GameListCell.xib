@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameListCell" id="uwO-h7-2Vl" customClass="GameListCell" customModule="TwitchGames" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="167" height="212"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="167" height="212"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OfC-hP-wNa">
+                        <rect key="frame" x="0.0" y="0.0" width="167" height="169"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome do jogo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoH-CX-djy">
+                        <rect key="frame" x="0.0" y="169" width="167" height="43"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="43" id="47E-wO-lzJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQp-pq-2c2">
+                        <rect key="frame" x="117" y="0.0" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="2Bh-c4-uGy"/>
+                            <constraint firstAttribute="height" constant="50" id="I1P-7K-5ht"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="55"/>
+                        <state key="normal" title="★">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="favoriteTouchUp:" destination="uwO-h7-2Vl" eventType="touchUpInside" id="hDs-En-638"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="GQp-pq-2c2" firstAttribute="top" secondItem="uwO-h7-2Vl" secondAttribute="top" id="0aP-Fo-3vK"/>
+                <constraint firstItem="OfC-hP-wNa" firstAttribute="leading" secondItem="uwO-h7-2Vl" secondAttribute="leading" id="2o4-7H-oQC"/>
+                <constraint firstAttribute="trailing" secondItem="WoH-CX-djy" secondAttribute="trailing" id="9vy-4k-mwU"/>
+                <constraint firstAttribute="trailing" secondItem="GQp-pq-2c2" secondAttribute="trailing" id="ElA-kZ-tIA"/>
+                <constraint firstItem="OfC-hP-wNa" firstAttribute="top" secondItem="uwO-h7-2Vl" secondAttribute="top" id="Fok-oa-vNQ"/>
+                <constraint firstAttribute="trailing" secondItem="OfC-hP-wNa" secondAttribute="trailing" id="NNB-JA-UAf"/>
+                <constraint firstItem="WoH-CX-djy" firstAttribute="leading" secondItem="uwO-h7-2Vl" secondAttribute="leading" id="Ure-Ld-viv"/>
+                <constraint firstAttribute="bottom" secondItem="WoH-CX-djy" secondAttribute="bottom" id="leP-Og-tNA"/>
+                <constraint firstItem="WoH-CX-djy" firstAttribute="top" secondItem="OfC-hP-wNa" secondAttribute="bottom" id="ngW-nx-fs9"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="kvx-kt-uRu"/>
+            <size key="customSize" width="120" height="208"/>
+            <connections>
+                <outlet property="favoriteButton" destination="GQp-pq-2c2" id="7nj-ZV-UUg"/>
+                <outlet property="imageGameCover" destination="OfC-hP-wNa" id="Jaq-VG-7Jr"/>
+                <outlet property="labelTitle" destination="WoH-CX-djy" id="c4Q-BA-kQL"/>
+            </connections>
+            <point key="canvasLocation" x="1.5" y="33"/>
+        </collectionViewCell>
+    </objects>
+</document>
