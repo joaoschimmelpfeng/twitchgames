@@ -38,6 +38,7 @@ class FavoriteListViewModel: ListViewModel {
             row < modelList.value.count  else {
                 return
         }
-        segueTuple.value = ("toGameDetails", modelList.value[row])
+        let model = GameModel.getUpdateVersion(of: modelList.value[row])
+        segueTuple.value = ("toGameDetails", model)
     }
 }

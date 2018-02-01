@@ -59,7 +59,6 @@ class TopGameListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //Para a lista atualizar.
         viewModel?.loadFavoritesList()
     }
     
@@ -118,7 +117,13 @@ class TopGameListViewController: UIViewController {
 extension TopGameListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.bounds.width
-        let cellWidth = (width - 30) / 2
+        var cellWidth:CGFloat = 0
+        if width > 500 {
+            cellWidth = (width - 30) / 4
+        } else {
+            cellWidth = (width - 30) / 2
+        }
+        
         return CGSize(width: cellWidth, height: cellWidth + 43)
     }
     

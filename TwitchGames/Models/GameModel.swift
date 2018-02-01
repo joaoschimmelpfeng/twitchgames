@@ -47,6 +47,12 @@ struct GameModel {
     }
     
     static func saveToCoreData(model: GameModel) {
+        //checar duplicados
+        let list = retrieveFavorites()
+        for i in list where i.id == model.id{
+            return
+        }
+        
         let context = getContext()
         let entity = NSEntityDescription.entity(forEntityName: "GameModelCore", in: context)
         let gameModel = NSManagedObject(entity: entity!, insertInto: context)
@@ -85,8 +91,46 @@ struct GameModel {
             }
             return models
         } catch {
-            print("Failed")
+            print(#function, "Erro ao buscar dados.")
             return []
+        }
+    }
+    
+    static func getUpdateVersion(of model: GameModel) -> GameModel{
+        var newModel = model
+        let context = getContext()
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GameModelCore")
+        request.predicate = NSPredicate(format: "id == \(newModel.id)")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            if result.count > 0 {
+                newModel.isFavorite = true
+            } else {
+                newModel.isFavorite = false
+            }
+        } catch {
+            print(#function, "Erro ao buscar dados.")
+            return newModel
+        }
+        return newModel
+    }
+    
+    static func removeFromCoredata(model: GameModel) {
+        let context = getContext()
+        do {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GameModelCore")
+            fetchRequest.predicate = NSPredicate(format: "id==\(model.id)")
+            let result = try context.fetch(fetchRequest)
+            for object in result {
+                if let managedObject = object as? NSManagedObject {
+                    context.delete(managedObject)
+                }
+            }
+            
+            try context.save()
+        } catch {
+            print(#function,"Erro ao deletar modelo.")
         }
     }
 }

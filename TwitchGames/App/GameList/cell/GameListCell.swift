@@ -17,6 +17,7 @@ class GameListCell: UICollectionViewCell {
     var model: GameModel? {
         didSet {
             labelTitle.text = model?.name ?? ""
+            imageGameCover.image = nil
             if let imgUrl = URL(string: model?.imgUrl_high ?? "") {
                 Manager.shared.loadImage(with: imgUrl, into: imageGameCover)
             }
@@ -30,14 +31,15 @@ class GameListCell: UICollectionViewCell {
     
     @IBAction func favoriteTouchUp(_ sender: Any) {
         if model?.isFavorite ?? false {
-            //TODO: Remover do coreData por id
+            model?.isFavorite = false
+            GameModel.removeFromCoredata(model: model!)
             favoriteButton.setTitleColor(UIColor.gray , for: .normal)
         } else {
-            // TODO: Checar duplicado antes de salvar
             if let consistentModel = self.model {
                 GameModel.saveToCoreData(model: consistentModel)
             }
             favoriteButton.setTitleColor(UIColor.yellow , for: .normal)
+            model?.isFavorite = true
         }
     }
     

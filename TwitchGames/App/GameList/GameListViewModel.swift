@@ -20,11 +20,15 @@ class GameListViewModel: ListViewModel {
     
     var skip = 0
     var keyword = ""
-    let limit = 10
+    let limit = 20
     
     func loadFavoritesList() {
         favoriteList = GameModel.retrieveFavorites()
+        checkForFavorites()
+        //Para recarregar a collection
+        modelList.value = modelList.value
     }
+    
     
     func loadModels() {
         //Não carregar mais caso esteja pesquisando por palavra-chave
@@ -43,15 +47,7 @@ class GameListViewModel: ListViewModel {
                     }
                 }
                 
-                //checar favoritos
-                for i in 0..<self.modelList.value.count {
-                    let isFav = self.favoriteList.contains {
-                        $0.id == self.modelList.value[i].id
-                    }
-                    if isFav {
-                        self.modelList.value[i].isFavorite = true
-                    }
-                }
+                self.checkForFavorites()
                 
                 self.skip += self.limit
                 self.isRefreshing.value = false
@@ -65,6 +61,19 @@ class GameListViewModel: ListViewModel {
             }
         
         ).disposed(by: disposeBag)
+    }
+    
+    func checkForFavorites() {
+        for i in 0..<self.modelList.value.count {
+            let isFav = self.favoriteList.contains {
+                $0.id == self.modelList.value[i].id
+            }
+            if isFav {
+                self.modelList.value[i].isFavorite = true
+            } else {
+                self.modelList.value[i].isFavorite = false
+            }
+        }
     }
     
     func search(keyword: String) {
@@ -86,6 +95,7 @@ class GameListViewModel: ListViewModel {
             row < modelList.value.count  else {
             return
         }
-        segueTuple.value = ("toGameDetails", modelList.value[row])
+        let model = GameModel.getUpdateVersion(of: modelList.value[row])
+        segueTuple.value = ("toGameDetails", model)
     }
 }

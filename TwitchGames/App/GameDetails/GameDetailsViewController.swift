@@ -20,7 +20,6 @@ class GameDetailsViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
-        bindUI()
         
         let rightButtonItem = UIBarButtonItem.init(
             title: "★",
@@ -28,8 +27,12 @@ class GameDetailsViewController: UIViewController {
             target: self,
             action: #selector(GameDetailsViewController.didSelectFavorites)
         )
-        rightButtonItem.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        //rightButtonItem.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        rightButtonItem.tintColor = .gray
+        let font = UIFont.systemFont(ofSize: 30)
+        rightButtonItem.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
         self.navigationItem.rightBarButtonItem = rightButtonItem
+        bindUI()
     }
     
     func bindUI() {
@@ -44,9 +47,14 @@ class GameDetailsViewController: UIViewController {
         viewModel.imageUrl.asDriver()
             .drive(imageGameCover.rx.imageFromWeb)
             .disposed(by: disposeBag)
+        if let barbutton = self.navigationItem.rightBarButtonItem {
+            viewModel.favoriteColor.asDriver()
+                .drive(barbutton.rx.color)
+                .disposed(by: disposeBag)
+        }
     }
     
     @objc func didSelectFavorites() {
-        //TODO: Marcar favoritos aqui tmb
+        viewModel.favorite()
     }
 }
