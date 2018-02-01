@@ -14,12 +14,17 @@ class GameListViewModel: ListViewModel {
     var segueTuple = Variable<(String, GameModel)>(("",GameModel()))
     var isRefreshing = Variable<Bool>(false)
     var alertTuple = Variable<(String, String)?>(nil)
+    var favoriteList = [GameModel]()
     
     let disposeBag = DisposeBag()
     
     var skip = 0
     var keyword = ""
     let limit = 10
+    
+    func loadFavoritesList() {
+        favoriteList = GameModel.retrieveFavorites()
+    }
     
     func loadModels() {
         //Não carregar mais caso esteja pesquisando por palavra-chave
@@ -37,6 +42,17 @@ class GameListViewModel: ListViewModel {
                         self.modelList.value.append(i)
                     }
                 }
+                
+                //checar favoritos
+                for i in 0..<self.modelList.value.count {
+                    let isFav = self.favoriteList.contains {
+                        $0.id == self.modelList.value[i].id
+                    }
+                    if isFav {
+                        self.modelList.value[i].isFavorite = true
+                    }
+                }
+                
                 self.skip += self.limit
                 self.isRefreshing.value = false
             },

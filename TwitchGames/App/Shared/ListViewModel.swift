@@ -15,6 +15,7 @@ protocol ListViewModel {
     var alertTuple: Variable<(String, String)?> { get }
     
     func loadModels()
+    func loadFavoritesList()
     func search(keyword: String)
     func didSelectItem(indexPath: IndexPath?)
 }

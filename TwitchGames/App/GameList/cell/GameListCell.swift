@@ -22,12 +22,23 @@ class GameListCell: UICollectionViewCell {
             }
             if model?.isFavorite ?? false {
                 favoriteButton.setTitleColor(UIColor.yellow , for: .normal)
+            } else {
+                favoriteButton.setTitleColor(UIColor.gray , for: .normal)
             }
         }
     }
     
     @IBAction func favoriteTouchUp(_ sender: Any) {
-        favoriteButton.setTitleColor(UIColor.yellow , for: .normal)
+        if model?.isFavorite ?? false {
+            //TODO: Remover do coreData por id
+            favoriteButton.setTitleColor(UIColor.gray , for: .normal)
+        } else {
+            // TODO: Checar duplicado antes de salvar
+            if let consistentModel = self.model {
+                GameModel.saveToCoreData(model: consistentModel)
+            }
+            favoriteButton.setTitleColor(UIColor.yellow , for: .normal)
+        }
     }
     
 }

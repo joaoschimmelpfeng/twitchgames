@@ -53,7 +53,14 @@ class TopGameListViewController: UIViewController {
         bindAlert()
         bindRefreshControl()
         bindCollectionView()
+        viewModel?.loadFavoritesList()
         viewModel?.loadModels()
+        collectionView.invalidateIntrinsicContentSize()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //Para a lista atualizar.
+        viewModel?.loadFavoritesList()
     }
     
     func bindSearchBar() {

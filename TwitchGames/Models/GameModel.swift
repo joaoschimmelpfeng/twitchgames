@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 struct GameModel {
     var id = 0
@@ -37,5 +39,54 @@ struct GameModel {
         model.imgUrl_high = high
         
         return model
+    }
+    
+    fileprivate static func getContext() -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+    
+    static func saveToCoreData(model: GameModel) {
+        let context = getContext()
+        let entity = NSEntityDescription.entity(forEntityName: "GameModelCore", in: context)
+        let gameModel = NSManagedObject(entity: entity!, insertInto: context)
+        gameModel.setValue(model.name, forKey: "name")
+        gameModel.setValue(model.id, forKey: "id")
+        gameModel.setValue(model.imgUrl_high, forKey: "imgpath")
+        gameModel.setValue(model.viewers, forKey: "viewers")
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+    }
+    
+    static func retrieveFavorites() -> [GameModel]{
+        let context = getContext()
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GameModelCore")
+        request.returnsObjectsAsFaults = false
+        var models = [GameModel]()
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                guard let id = data.value(forKey: "id") as? Int,
+                    let name = data.value(forKey: "name") as? String,
+                    let imgpath = data.value(forKey: "imgpath") as? String,
+                    let viewers = data.value(forKey: "viewers") as? Int else {
+                        continue
+                }
+                var gameModel = GameModel()
+                gameModel.id = id
+                gameModel.name = name
+                gameModel.imgUrl_high = imgpath
+                gameModel.viewers = viewers
+                models.append(gameModel)
+            }
+            return models
+        } catch {
+            print("Failed")
+            return []
+        }
     }
 }

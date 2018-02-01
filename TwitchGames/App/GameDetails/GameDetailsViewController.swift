@@ -47,6 +47,6 @@ class GameDetailsViewController: UIViewController {
     }
     
     @objc func didSelectFavorites() {
-        
+        //TODO: Marcar favoritos aqui tmb
     }
 }
